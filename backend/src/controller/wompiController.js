@@ -8,7 +8,7 @@ wompiController.generarToken = async (req, res) => {
         const response = await fetch("https://id.wompi.sv/connect/token",
             {
                 method: "POST",
-                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                headers: {"Content-type": "application/x-www-form-urlencoded"},
                 body: new URLSearchParams({
                     grant_type: config.wompi.grant_type,
                     audience: config.wompi.audience,
@@ -35,7 +35,7 @@ wompiController.PaymentTest = async (req, res) => {
         const {token, formData} = req.body
         const response = await fetch("https://api.wompi.sv/TransaccionCompra/TokenizadaSin3Ds", {
             method: "POST",
-            header: {
+            headers: {
                 "Content-type": "application/json",
                 Authorization: `Bearer ${token}`
             },
