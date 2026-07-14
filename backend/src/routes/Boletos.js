@@ -5,10 +5,10 @@ import {validateAuthCookie} from "../middleware/validateAuthCookie.js"
 const router = express.Router()
 
 router.route("/")
-.get(validateAuthCookie["admin"], BoletosController.get)
-.post(validateAuthCookie["user"], BoletosController.post)
+.get(validateAuthCookie(["user"]), BoletosController.get)
+.post(validateAuthCookie(["user"]), BoletosController.post)
 
 router.route("/:id")
-.put(validateAuthCookie["admin"],BoletosController.put)
-.delete(validateAuthCookie["admin"],BoletosController.delete)
+.put(validateAuthCookie(["admin"]),BoletosController.put)
+.delete(validateAuthCookie(["admin"]),BoletosController.delete)
 export default router

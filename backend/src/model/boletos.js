@@ -10,7 +10,7 @@
 import mongoose, {Schema, model} from "mongoose"
 
 const boletoSchema = new Schema({
-    customerId: {type: mongoose.Schema.Types.ObjectId, ref: "usuario"},
+    customerId: {type: mongoose.Schema.Types.ObjectId, ref: "usuarios"},
     quantity: {type: Number},
     purchaseDate: {type: Date},
     total: {type: Number},
