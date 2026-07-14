@@ -9,7 +9,7 @@ export const validateAuthCookieAdmin = (allowedTypes = []) => {
                 return res.status(403).json({message: "Auth"})
             }
             const decoded = jsonwebtoken.verify(authCookieAdmin, config.JWT.secret)
-            if(allowedTypes.includes(decoded.userType)){
+            if(!allowedTypes.includes(decoded.userType)){
                 return res.status(401).json({message: "denegado"})
             }
 
@@ -29,7 +29,7 @@ export const validateAuthCookieUser = (allowedTypes = []) => {
                 return res.status(403).json({message: "Auth"})
             }
             const decoded = jsonwebtoken.verify(authCookieUser, config.JWT.secret)
-            if(allowedTypes.includes(decoded.userType)){
+            if(!allowedTypes.includes(decoded.userType)){
                 return res.status(401).json({message: "denegado"})
             }
 
