@@ -1,14 +1,15 @@
 import express from "express"
 import BoletosController from "../controller/BoletosController.js"
-import {validateAuthCookie} from "../middleware/validateAuthCookie.js"
+import {validateAuthCookieAdmin, validateAuthCookieUser} from "../middleware/validateAuthCookie.js"
 
 const router = express.Router()
 
 router.route("/")
-.get(validateAuthCookie(["user"]), BoletosController.get)
-.post(validateAuthCookie(["user"]), BoletosController.post)
+.get(validateAuthCookieAdmin(["admin"]), BoletosController.get)
+.post(validateAuthCookieUser(["user"]), BoletosController.post)
 
 router.route("/:id")
-.put(validateAuthCookie(["admin"]),BoletosController.put)
-.delete(validateAuthCookie(["admin"]),BoletosController.delete)
+.put(validateAuthCookieAdmin(["admin"]),BoletosController.put)
+.delete(validateAuthCookieAdmin(["admin"]),BoletosController.delete)
 export default router
+
